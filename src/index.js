@@ -1,17 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';  //import App from "./App": ./App.js 모듈에서 기본 모듈을 가져오고 이름을 App으로 사용함.
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App"; //import App from "./App": ./App.js 모듈에서 기본 모듈을 가져오고 이름을 App으로 사용함.
 //  ./: 현재 디렉토리에 있는
-import reportWebVitals from './reportWebVitals';
-
+import reportWebVitals from "./reportWebVitals";
 
 // Root 컴포넌트를 로딩해주는 영역
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
