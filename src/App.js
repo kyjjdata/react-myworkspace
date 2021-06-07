@@ -9,6 +9,10 @@ import {
   createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
+
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
 // import { green, purple } from "@meterial-ui/core/colors";
 import purple from "@material-ui/core/colors/purple";
 import green from "@material-ui/core/colors/green";
@@ -37,10 +41,20 @@ import {
 
 import Home from "./component/home/Home";
 
-//라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
-const Contact = lazy(() => import("./component/Contact"));
-const Todo = lazy(() => import("./component/todo/Todo"));
+// ./redux :
+// redux.js 파일이 있던가 또는 redex 디렉토리(/redux/indes.js)를 찾아 import.
+import rootReducer from "./redux";
 
+// rootReducer로 redux store 생성
+const store = createStore(rootReducer);
+
+//라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
+const Contact = lazy(() => import("./component/Contact-test-0607/Contact"));
+const Todo = lazy(() => import("./component/todo/Todo"));
+const TodoDetail = lazy(() => import("./component/todo-redux/TodoDetail"));
+const ContactDetail = lazy(() =>
+  import("./component/Contact-test-0607/ContactDetail")
+);
 const drawerWidth = "240px";
 
 const useStyles = makeStyles((theme) => ({
@@ -138,70 +152,75 @@ function App() {
     </>
   );
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <div className={classes.root}>
-          <header>
-            <AppBar position="fixed" className={classes.appbar}>
-              {" "}
-              {/* 스크롤을 해도 고정되게 */}
-              <Toolbar>
-                {/* color="inherit" 부모 요소의 폰트 컬러를 사용함 */}
-                <IconButton
-                  color="inherit"
-                  edge="start"
-                  className={classes.menuButton}
-                  onClick={handleDrawerToggle}
-                >
-                  <MenuIcon />
-                  <Typography variant="h6" noWrap>
-                    MY WORKSPACE
-                  </Typography>
-                </IconButton>
-              </Toolbar>
-            </AppBar>
+    // Provider 하위 컴포넌트들에 redux store를 쓸 수 있게 해줌
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <div className={classes.root}>
+            <header>
+              <AppBar position="fixed" className={classes.appbar}>
+                {" "}
+                {/* 스크롤을 해도 고정되게 */}
+                <Toolbar>
+                  {/* color="inherit" 부모 요소의 폰트 컬러를 사용함 */}
+                  <IconButton
+                    color="inherit"
+                    edge="start"
+                    className={classes.menuButton}
+                    onClick={handleDrawerToggle}
+                  >
+                    <MenuIcon />
+                    <Typography variant="h6" noWrap>
+                      MY WORKSPACE
+                    </Typography>
+                  </IconButton>
+                </Toolbar>
+              </AppBar>
 
-            {/* 앱서랍(Drawer) */}
-            {/* 화면이 1280px 이상일 때 숨기는 서랍 */}
-            <Hidden lgUp implementation="css">
-              <Drawer
-                variant="temporary"
-                open={mobileOpen}
-                classes={{ paper: classes.drawerPaper }}
-                onClose={handleDrawerToggle}
-              >
-                {drawer}
-              </Drawer>
-            </Hidden>
-            {/* 화면이 1280px 미만일 때 숨기는 서랍 */}
-            <Hidden mdDown implementation="css">
-              <Drawer
-                open
-                variant="permanent"
-                classes={{ paper: classes.drawerPaper }}
-              >
-                {drawer}
-              </Drawer>
-            </Hidden>
-          </header>
-          <main className={classes.content}>
-            {/* 상단 toolbar 공간만큼 띄우기 */}
-            <div className={classes.toolbar} />
-            {/* 컴포넌트가 로딩되는 동안 표시할 내용을 보여주는 컴포넌트 */}
-            <Suspense fallback={<div>Loading...</div>}>
-              {/* Switch 안쪽 영역 Conponent가 표시됨 */}
-              <Switch>
-                {/* Switch 안쪽 영역에 로딩할 컴포넌트와 경로를 Route로 작성 */}
-                {/* exact 해당 경로와 완전히 일치할 때만 적용됨 */}
-                <Route path="/" component={Home} exact></Route>
-                <Route path="/todo" component={Todo}></Route>
-                <Route path="/contacts" component={Contact}></Route>
-              </Switch>
-            </Suspense>
-          </main>
-        </div>
-      </Router>
-    </ThemeProvider>
+              {/* 앱서랍(Drawer) */}
+              {/* 화면이 1280px 이상일 때 숨기는 서랍 */}
+              <Hidden lgUp implementation="css">
+                <Drawer
+                  variant="temporary"
+                  open={mobileOpen}
+                  classes={{ paper: classes.drawerPaper }}
+                  onClose={handleDrawerToggle}
+                >
+                  {drawer}
+                </Drawer>
+              </Hidden>
+              {/* 화면이 1280px 미만일 때 숨기는 서랍 */}
+              <Hidden mdDown implementation="css">
+                <Drawer
+                  open
+                  variant="permanent"
+                  classes={{ paper: classes.drawerPaper }}
+                >
+                  {drawer}
+                </Drawer>
+              </Hidden>
+            </header>
+            <main className={classes.content}>
+              {/* 상단 toolbar 공간만큼 띄우기 */}
+              <div className={classes.toolbar} />
+              {/* 컴포넌트가 로딩되는 동안 표시할 내용을 보여주는 컴포넌트 */}
+              <Suspense fallback={<div>Loading...</div>}>
+                {/* Switch 안쪽 영역 Conponent가 표시됨 */}
+                <Switch>
+                  {/* Switch 안쪽 영역에 로딩할 컴포넌트와 경로를 Route로 작성 */}
+                  {/* exact 해당 경로와 완전히 일치할 때만 적용됨 */}
+                  <Route path="/" component={Home} exact></Route>
+                  <Route path="/todo" component={Todo} exact></Route>
+                  <Route path="/todo/:id" component={TodoDetail}></Route>
+                  <Route path="/contacts/:id" component={ContactDetail}></Route>
+                  <Route path="/contacts" component={Contact} exact></Route>
+                </Switch>
+              </Suspense>
+            </main>
+          </div>
+        </Router>
+      </ThemeProvider>
+    </Provider>
   );
 }
 
