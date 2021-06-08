@@ -3,12 +3,19 @@
 
 import ContactItem from "./ContactItem";
 import { TableContainer, Table, TableBody } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const ContactList = () => {
   //useSeletor는 redux store의 state를 선택(select)
   //  const 하위state변수 = useSelector((전체state) => 하위state)
   const contact = useSelector((state) => state.contact);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_CONTACTLIST" });
+  }, [dispatch]);
+
   return (
     <TableContainer>
       <Table>

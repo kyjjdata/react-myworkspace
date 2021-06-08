@@ -15,13 +15,12 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const add = () => {
-    const id = new Date().getTime();
     const name = inputRef.current.value;
     const phone = input1Ref.current.value;
     const mail = input2Ref.current.value;
     //ditpatch(action 객체)
     // action객체 = {type:"명령어", payload:메세지객체}
-    dispatch({ type: "ADD_CONTACT", payload: { id, name, phone, mail } });
+    dispatch({ type: "ADD_CONTACT", payload: { name, phone, mail } });
 
     inputRef.current.value = "";
     input1Ref.current.value = "";

@@ -54,13 +54,11 @@ const sagaMiddleWare = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleWare));
 
 //루트 saga로 saga middleware 실행
-// saga에서 중간에 캐치할 action들에 대해서 응답대기
-// 반복문이 돌고 있음 -> event-loop
 sagaMiddleWare.run(rootSaga);
 
 //라우터에 로딩되는 컴포넌트는 컨테이너 컴포넌트
 const Contact = lazy(() => import("./component/Contact-test-0607/Contact"));
-const Todo = lazy(() => import("./component/todo-redux/Todo"));
+const Todo = lazy(() => import("./component/todo/Todo"));
 const TodoDetail = lazy(() => import("./component/todo-redux/TodoDetail"));
 const ContactDetail = lazy(() =>
   import("./component/Contact-test-0607/ContactDetail")

@@ -9,19 +9,19 @@ import { useState, useRef } from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 
-const TodoItem = ({ index, todo, onSave }) => {
+const TodoItem = ({ todo }) => {
   const [isEdit, setIsEdit] = useState(todo.isEdit);
-
-  const history = useHistory(); //코드를 이용하여 경로 이동을 제어할수있음
-  const dispath = useDispatch();
+  const history = useHistory(); // 코드를 이용하여 경로 이동 제어를 할 수 있음
+  const dispatch = useDispatch();
   const inputRef = useRef();
+
   const remove = (id) => {
-    dispath({ type: "REMOVE_TODO", payload: id });
+    dispatch({ type: "REMOVE_TODO", payload: id });
   };
 
   const save = (id) => {
     const memo = inputRef.current.value;
-    dispath({ type: "SAVE_TODO", payload: { id, memo } });
+    dispatch({ type: "MODIFY_TODO", payload: { id, memo } });
   };
 
   return (
@@ -31,12 +31,12 @@ const TodoItem = ({ index, todo, onSave }) => {
           remove(todo.id);
         }}
       >
-        <Check />
+        <Check style={{ cursor: "pointer" }} />
       </ListItemIcon>
       {!isEdit && (
         <ListItemText
           style={{ cursor: "pointer" }}
-          //histoty.push('경로'), history 스택(stack)에 경로 추가
+          // history.push('경로'), history 스택(stack)에 경로 추가
           onClick={() => {
             history.push(`/todo/${todo.id}`);
           }}
@@ -66,7 +66,7 @@ const TodoItem = ({ index, todo, onSave }) => {
       {isEdit && (
         <Button
           onClick={() => {
-            save(id.memo);
+            save(todo.id);
             setIsEdit(false);
           }}
         >

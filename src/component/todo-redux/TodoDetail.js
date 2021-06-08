@@ -1,37 +1,88 @@
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router";
-import { list } from "./data";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import List from "@material-ui/core/List";
+import Hidden from "@material-ui/core/Hidden";
+import { Box, Button, Divider, Typography } from "@material-ui/core";
+
+import { useParams, useHistory } from "react-router-dom";
+
+import TodoComment from "./TodoComment";
+
+import { useSelector } from "react-redux";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(2),
+    color: theme.palette.text.secondary,
+  },
+
+  container: {
+    [theme.breakpoints.up("lg")]: {
+      marginTop: "80px",
+    },
+  },
+}));
 
 const TodoDetail = () => {
-  // const{매개변수명1, 매개변수명2 ...} = useParams();
-  // todo/:id -> /todo/1
-  // id = 1
-  const { id } = useParams();
-  //useParams로 오는 변수는 무조건 문자열임. 숫자로 인식하지 않는다.
-  const history = useHistory(); //코드를 이용하여 경로 이동을 제어할수있음
+  const classes = useStyles();
+  const history = useHistory();
 
-  // === (stric equal)로 비교하려면 타입을 맞춰야함 -> useParam 매개변수를 숫자로 변환
-  const todo = list.filter((todo) => todo.id === parseFloat(todo.id))[0];
+  // /todo/:id
+  const { id } = useParams();
+  // console.log(id);
+  // URL 매개변수는 문자열로 들어옴 숫자값 비교면 변환 후 비교
+  const todo = useSelector(
+    (state) => state.todo.filter((todo) => todo.id === parseInt(id))[0]
+  );
+  // console.log(todo);
 
   return (
     <>
-      <h1>Hello: {id}</h1>
-      {/* filter 함수는 항상 배열로 나옴, 1건이라도 [{}, 2건 [{},{}]] */}
-      <p>{todo.memo}</p>
-      <div>
-        <button
-          onClick={() => {
-            history.push("/todo"); // 경로마다 기록을 다 남겨야할때
-
-            //history.goBack(-1); //goBack(-뒤로갈단계)
-
-            // history.replace("/todo"); //replace("덮어씌울경로") -> 현재 경로를 새로운 경로로 씌워 띄움
-          }}
-        >
-          목록
-        </button>
-      </div>
+      <Grid container spacing={3} className={classes.container}>
+        <Hidden xsDown>
+          <Grid item sm={1} md={2} lg={3} />
+        </Hidden>
+        <Grid item xs={12} sm={10} md={8} lg={6}>
+          <Paper className={classes.paper}>
+            <Typography variant="h3">To-Do</Typography>
+            <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
+            <Box style={{ padding: "1rem" }}>{todo.memo}</Box>
+            <Box style={{ display: "flex", direction: "rtl" }}>
+              <Button
+                size="small"
+                variant="outlined"
+                color="primary"
+                onClick={() => {
+                  history.push("/todo");
+                }}
+                // onClick={() => {
+                //   history.replace("/todo");
+                // }}
+                // onClick={() => {
+                //   history.goBack(-1);
+                // }}
+              >
+                목록
+              </Button>
+            </Box>
+          </Paper>
+          {todo.comments && (
+            <Paper style={{ marginTop: "2rem" }} className={classes.paper}>
+              <List>
+                {todo.comments.map((comment, index) => (
+                  <TodoComment key={index} index={index} comment={comment} />
+                ))}
+              </List>
+            </Paper>
+          )}
+        </Grid>
+        <Hidden xsDown>
+          <Grid item sm={1} md={2} lg={3} />
+        </Hidden>
+      </Grid>
     </>
   );
 };
+
 export default TodoDetail;

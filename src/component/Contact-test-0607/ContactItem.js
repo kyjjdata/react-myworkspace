@@ -27,7 +27,7 @@ const ContactItem = ({ info }) => {
     const name = inputRef.current.value;
     const phone = input1Ref.current.value;
     const mail = input2Ref.current.value;
-    dispatch({ type: "SAVE_CONTACT", payload: { id, name, phone, mail } });
+    dispatch({ type: "MODIFY_CONTACT", payload: { id, name, phone, mail } });
   };
 
   return (
