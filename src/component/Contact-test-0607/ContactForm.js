@@ -77,14 +77,16 @@ const ContactForm = () => {
           />
         </TableCell>
 
-        <Button
-          style={{ width: "10%" }}
-          variant="contained"
-          color="primary"
-          onClick={add}
-        >
-          입력
-        </Button>
+        <TableCell>
+          <Button
+            style={{ width: "10%" }}
+            variant="contained"
+            color="primary"
+            onClick={add}
+          >
+            입력
+          </Button>
+        </TableCell>
       </TableRow>
     </TableHead>
   );

@@ -78,15 +78,17 @@ const ContactItem = ({ info }) => {
         </TableCell>
       )}
       {!isEdit && (
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => {
-            setIsEdit(true);
-          }}
-        >
-          수정
-        </Button>
+        <TableCell>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              setIsEdit(true);
+            }}
+          >
+            수정
+          </Button>
+        </TableCell>
       )}
       {isEdit && (
         <TableCell>
@@ -122,37 +124,43 @@ const ContactItem = ({ info }) => {
         </TableCell>
       )}
       {isEdit && (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            save(info.id);
-            setIsEdit(false);
-          }}
-        >
-          저장
-        </Button>
+        <TableCell>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              save(info.id);
+              setIsEdit(false);
+            }}
+          >
+            저장
+          </Button>
+        </TableCell>
       )}
       {isEdit && (
+        <TableCell>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              setIsEdit(false);
+            }}
+          >
+            취소
+          </Button>
+        </TableCell>
+      )}
+      <TableCell>
         <Button
           variant="contained"
-          color="secondary"
+          color="default"
           onClick={() => {
-            setIsEdit(false);
+            remove(info.id);
           }}
         >
-          취소
+          삭제
         </Button>
-      )}
-      <Button
-        variant="contained"
-        color="default"
-        onClick={() => {
-          remove(info.id);
-        }}
-      >
-        삭제
-      </Button>
+      </TableCell>
     </TableRow>
   );
 };
