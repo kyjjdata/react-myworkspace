@@ -26,8 +26,8 @@ const ContactItem = ({ info }) => {
   const save = (id) => {
     const name = inputRef.current.value;
     const phone = input1Ref.current.value;
-    const email = input2Ref.current.value;
-    dispatch({ type: "MODIFY_CONTACT", payload: { id, name, phone, email } });
+    const mail = input2Ref.current.value;
+    dispatch({ type: "MODIFY_CONTACT", payload: { id, name, phone, mail } });
   };
 
   return (
@@ -74,7 +74,7 @@ const ContactItem = ({ info }) => {
             history.push(`/contacts/${info.id}`);
           }}
         >
-          {info.email}
+          {info.mail}
         </TableCell>
       )}
       {!isEdit && (

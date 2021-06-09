@@ -21,7 +21,7 @@ const ContactDetail = () => {
       <p>
         {"이름 :" + info.name}
         {"전화번호 :" + info.phone}
-        {"이메일:" + info.email}
+        {"이메일:" + info.mail}
       </p>
       <div>
         <button

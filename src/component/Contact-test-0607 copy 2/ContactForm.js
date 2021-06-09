@@ -17,10 +17,10 @@ const ContactForm = () => {
   const add = () => {
     const name = inputRef.current.value;
     const phone = input1Ref.current.value;
-    const email = input2Ref.current.value;
+    const mail = input2Ref.current.value;
     //ditpatch(action 객체)
     // action객체 = {type:"명령어", payload:메세지객체}
-    dispatch({ type: "ADD_CONTACT", payload: { name, phone, email } });
+    dispatch({ type: "ADD_CONTACT", payload: { name, phone, mail } });
 
     inputRef.current.value = "";
     input1Ref.current.value = "";
