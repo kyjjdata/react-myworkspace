@@ -26,7 +26,11 @@ const ContactList = () => {
           ))}
         </TableBody>
       </Table>
-      <ContactPagination />
+      <ContactPagination
+        totalElements={data.totalElements}
+        page={data.page}
+        size={data.size}
+      />
     </TableContainer>
   );
 };
