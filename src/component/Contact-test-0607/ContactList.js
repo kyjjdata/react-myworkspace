@@ -5,26 +5,28 @@ import ContactItem from "./ContactItem";
 import { TableContainer, Table, TableBody } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import ContactPagination from "./ContactPagination";
 
 const ContactList = () => {
   //useSeletor는 redux store의 state를 선택(select)
   //  const 하위state변수 = useSelector((전체state) => 하위state)
-  const contact = useSelector((state) => state.contact);
+  const data = useSelector((state) => state.contact);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: "FETCH_CONTACTLIST" });
+    dispatch({ type: "FETCH_CONTACTLIST_PAGING" });
   }, [dispatch]);
 
   return (
     <TableContainer>
       <Table>
         <TableBody style={{ height: "40vh", overflowY: "auto" }}>
-          {contact.map((info) => (
+          {data.content.map((info) => (
             <ContactItem key={info.id} info={info} />
           ))}
         </TableBody>
       </Table>
+      <ContactPagination />
     </TableContainer>
   );
 };

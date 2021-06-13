@@ -3,7 +3,7 @@
 
 import { fork } from "@redux-saga/core/effects";
 import todoSaga from "./todo-paging";
-import contactSaga from "./contact";
+import contactSaga from "./contact-paging";
 // import contactSaga from "./contact";
 
 export default function* rootSaga() {
