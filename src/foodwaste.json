@@ -1,0 +1,102 @@
+{
+  "data": {
+    "resultCode": "OK",
+    "resultMsg": "성공",
+    "count": 7,
+    "page": 1,
+    "rowNum": 7,
+    "list": [
+      {
+        "disYear": "2021",
+        "disMonth": "03",
+        "disDay": 1,
+        "disDayCount": 4,
+        "cityCode": "W07",
+        "citySidoName": "서울특별시",
+        "citySggName": "중랑구",
+        "disQuantity": 90894200,
+        "dayAverQuantity": 22723550,
+        "disCount": 58941,
+        "dayAverCount": 14735
+      },
+      {
+        "disYear": "2021",
+        "disMonth": "03",
+        "disDay": 2,
+        "disDayCount": 4,
+        "cityCode": "W07",
+        "citySidoName": "서울특별시",
+        "citySggName": "중랑구",
+        "disQuantity": 91771250,
+        "dayAverQuantity": 22942813,
+        "disCount": 62079,
+        "dayAverCount": 15520
+      },
+      {
+        "disYear": "2021",
+        "disMonth": "03",
+        "disDay": 3,
+        "disDayCount": 4,
+        "cityCode": "W07",
+        "citySidoName": "서울특별시",
+        "citySggName": "중랑구",
+        "disQuantity": 84875750,
+        "dayAverQuantity": 21218938,
+        "disCount": 59926,
+        "dayAverCount": 14982
+      },
+      {
+        "disYear": "2021",
+        "disMonth": "03",
+        "disDay": 4,
+        "disDayCount": 4,
+        "cityCode": "W07",
+        "citySidoName": "서울특별시",
+        "citySggName": "중랑구",
+        "disQuantity": 81320350,
+        "dayAverQuantity": 20330088,
+        "disCount": 58778,
+        "dayAverCount": 14695
+      },
+      {
+        "disYear": "2021",
+        "disMonth": "03",
+        "disDay": 5,
+        "disDayCount": 5,
+        "cityCode": "W07",
+        "citySidoName": "서울특별시",
+        "citySggName": "중랑구",
+        "disQuantity": 62480950,
+        "dayAverQuantity": 12496190,
+        "disCount": 45580,
+        "dayAverCount": 9116
+      },
+      {
+        "disYear": "2021",
+        "disMonth": "03",
+        "disDay": 6,
+        "disDayCount": 5,
+        "cityCode": "W07",
+        "citySidoName": "서울특별시",
+        "citySggName": "중랑구",
+        "disQuantity": 62142450,
+        "dayAverQuantity": 12428490,
+        "disCount": 45565,
+        "dayAverCount": 9113
+      },
+      {
+        "disYear": "2021",
+        "disMonth": "03",
+        "disDay": 7,
+        "disDayCount": 5,
+        "cityCode": "W07",
+        "citySidoName": "서울특별시",
+        "citySggName": "중랑구",
+        "disQuantity": 62480800,
+        "dayAverQuantity": 12496160,
+        "disCount": 43021,
+        "dayAverCount": 8604
+      }
+    ]
+  }
+}
