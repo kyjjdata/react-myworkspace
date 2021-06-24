@@ -35,10 +35,8 @@ import {
   TableChart,
   Menu as MenuIcon,
 } from "@material-ui/icons";
-import InboxIcon from "@material-ui/icons/Inbox";
 
 import Home from "./component/home/Home";
-import FoodWasteEmissions from "./component/foodwaste-emissions/FoodWasteEmissions";
 
 import { createStore, applyMiddleware } from "redux"; //saga middleware를 redux store에 적용하는데 씀
 import { Provider } from "react-redux";
@@ -144,14 +142,6 @@ function App() {
             <ListItemText>Home</ListItemText>
           </ListItem>
         </Link>
-        <Link to="/foodwaste-emissions" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText>FoodWaste</ListItemText>
-          </ListItem>
-        </Link>
         <Link to="/todo" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
@@ -230,11 +220,6 @@ function App() {
                   {/* Switch 안쪽 영역에 로딩할 컴포넌트와 경로를 Route로 작성 */}
                   {/* exact 해당 경로와 완전히 일치할 때만 적용됨 */}
                   <Route path="/" component={Home} exact></Route>
-                  <Route
-                    path="/foodwaste-emissions"
-                    component={FoodWasteEmissions}
-                    exact
-                  ></Route>
                   <Route path="/todo" component={Todo} exact></Route>
                   <Route path="/todo/:id" component={TodoDetail}></Route>
                   <Route path="/contacts/:id" component={ContactDetail}></Route>
