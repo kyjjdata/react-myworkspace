@@ -96,7 +96,7 @@ const ContactItem = ({ info }) => {
             type="text"
             inputRef={inputRef}
             defaultValue={""}
-            label="이름"
+            label="배출월"
             style={{ width: "100%" }}
           ></TextField>
         </TableCell>
@@ -107,7 +107,7 @@ const ContactItem = ({ info }) => {
             type="text"
             inputRef={input1Ref}
             defaultValue={""}
-            label="전화번호"
+            label="배출량"
             style={{ width: "100%" }}
           ></TextField>
         </TableCell>
@@ -118,7 +118,7 @@ const ContactItem = ({ info }) => {
             type="text"
             inputRef={input2Ref}
             defaultValue={""}
-            label="이메일 주소"
+            label="요금"
             style={{ width: "100%" }}
           ></TextField>
         </TableCell>

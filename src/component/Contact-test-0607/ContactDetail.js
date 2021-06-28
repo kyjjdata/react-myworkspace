@@ -12,17 +12,16 @@ const ContactDetail = () => {
   // const infoList = useSelector((state) => state.contact);
   // const info = infoList.filter((info) => info.id === parseInt(id)[0]);
   const info = useSelector(
-    (state) => state.contact.filter((info) => info.id === parseInt(id))[0]
+    (state) =>
+      state.contact.content.filter((info) => info.id === parseInt(id))[0]
   );
 
   return (
     <>
-      <h1> 연락처 목록</h1>
-      <p>
-        {"이름 :" + info.name}
-        {"전화번호 :" + info.phone}
-        {"이메일:" + info.email}
-      </p>
+      <h1> 우리집 음식물 쓰레기 배출내용</h1>
+      {"배출월 :" + info.name}
+      <p>{"배출량 :" + info.phone}</p>
+      <p>{"요금 :" + info.email}</p>
       <div>
         <button
           onClick={() => {

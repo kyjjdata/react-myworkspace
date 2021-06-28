@@ -41,7 +41,7 @@ const ContactForm = () => {
           <TextField
             variant="outlined"
             inputRef={inputRef}
-            label="이름"
+            label="배출월"
             onKeyPress={handleChange}
             size="small"
             style={{
@@ -54,7 +54,7 @@ const ContactForm = () => {
           <TextField
             variant="outlined"
             inputRef={input1Ref}
-            label="전화번호"
+            label="배출량"
             onKeyPress={handleChange}
             size="small"
             style={{
@@ -67,7 +67,7 @@ const ContactForm = () => {
           <TextField
             variant="outlined"
             inputRef={input2Ref}
-            label="이메일 주소"
+            label="요금"
             onKeyPress={handleChange}
             size="small"
             style={{

@@ -38,7 +38,9 @@ const Contact = () => {
         </Hidden>
         <Grid item xs={12} sm={10} md={8} lg={6}>
           <Paper className={classes.paper}>
-            <Typography variant="h3">Contact</Typography>
+            <Typography align="center" variant="h5">
+              우리집 음식물 쓰레기 배출내용
+            </Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
             <ContactForm />
             <ContactList />

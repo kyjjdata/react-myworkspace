@@ -160,7 +160,7 @@ function App() {
             <ListItemIcon>
               <CreateIcon />
             </ListItemIcon>
-            <ListItemText>To-Do</ListItemText>
+            <ListItemText>Memo</ListItemText>
           </ListItem>
         </Link>
         <Link to="/contacts" className={classes.link}>
@@ -168,7 +168,7 @@ function App() {
             <ListItemIcon>
               <CheckIcon />
             </ListItemIcon>
-            <ListItemText>Contacts </ListItemText>
+            <ListItemText>Record </ListItemText>
           </ListItem>
         </Link>
       </List>

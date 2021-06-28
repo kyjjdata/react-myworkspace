@@ -33,7 +33,7 @@ const TodoDetail = () => {
   // console.log(id);
   // URL 매개변수는 문자열로 들어옴 숫자값 비교면 변환 후 비교
   const todo = useSelector(
-    (state) => state.todo.filter((todo) => todo.id === parseInt(id))[0]
+    (state) => state.todo.content.filter((todo) => todo.id === parseInt(id))[0]
   );
   // console.log(todo);
 
@@ -45,7 +45,7 @@ const TodoDetail = () => {
         </Hidden>
         <Grid item xs={12} sm={10} md={8} lg={6}>
           <Paper className={classes.paper}>
-            <Typography variant="h3">To-Do</Typography>
+            <Typography variant="h3">Memo</Typography>
             <Divider style={{ marginTop: "1rem", marginBottom: "2rem" }} />
             <Box style={{ padding: "1rem" }}>{todo.memo}</Box>
             <Box style={{ display: "flex", direction: "rtl" }}>

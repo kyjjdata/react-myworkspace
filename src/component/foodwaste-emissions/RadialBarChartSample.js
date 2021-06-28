@@ -1,16 +1,10 @@
 import {
   RadialBarChart,
   ResponsiveContainer,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  PolarGrid,
   Legend,
   Tooltip,
   RadialBar,
-  Customized,
   Cell,
-  BarChart,
-  Bar,
 } from "recharts";
 const RadialBarChartSample = ({ data }) => {
   console.log("--RadialBarChartSample data--");
