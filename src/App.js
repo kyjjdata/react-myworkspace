@@ -36,6 +36,9 @@ import {
   Menu as MenuIcon,
 } from "@material-ui/icons";
 import InboxIcon from "@material-ui/icons/Inbox";
+import DeleteIcon from "@material-ui/icons/Delete";
+import CheckIcon from "@material-ui/icons/Check";
+import CreateIcon from "@material-ui/icons/Create";
 
 import Home from "./component/home/Home";
 import FoodWasteEmissions from "./component/foodwaste-emissions/FoodWasteEmissions";
@@ -147,7 +150,7 @@ function App() {
         <Link to="/foodwaste-emissions" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <InboxIcon />
+              <DeleteIcon />
             </ListItemIcon>
             <ListItemText>FoodWaste</ListItemText>
           </ListItem>
@@ -155,7 +158,7 @@ function App() {
         <Link to="/todo" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <PlaylistAddCheck />
+              <CreateIcon />
             </ListItemIcon>
             <ListItemText>To-Do</ListItemText>
           </ListItem>
@@ -163,9 +166,9 @@ function App() {
         <Link to="/contacts" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
-              <TableChart />
+              <CheckIcon />
             </ListItemIcon>
-            <ListItemText>Contacts</ListItemText>
+            <ListItemText>Contacts </ListItemText>
           </ListItem>
         </Link>
       </List>

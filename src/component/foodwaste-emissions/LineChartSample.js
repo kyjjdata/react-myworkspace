@@ -24,7 +24,7 @@ const LineChartSample = ({ data }) => {
         <Line
           type="monotone"
           dataKey="dayAverQuantity"
-          name="영등포구"
+          name="item"
           stroke="#8884d8"
         />
         <Line
@@ -33,7 +33,7 @@ const LineChartSample = ({ data }) => {
           name="용산구"
           stroke="#66bb6a"
         />
-        <Line type="monotone" dataKey="disCount" stroke="#FFB2F5" />
+        <Line type="monotone" name="aa" dataKey="disCount" stroke="#FFB2F5" />
       </LineChart>
     </ResponsiveContainer>
   );

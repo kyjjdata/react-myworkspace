@@ -57,7 +57,7 @@ const ResponsiveTable = ({ data }) => {
         <Tbody>
           {data.map((item) => (
             <Tr
-              key={`tr-${item.시도명칭}-${item.시군구}`}
+              key={`tr-${item.시군구}`}
               style={{
                 border: "0px",
                 borderBottom: "1px solid rgba(224, 224, 224)",

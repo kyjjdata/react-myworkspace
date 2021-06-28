@@ -10,18 +10,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const pm10Color = (val) => {
-  let color = "#329fff";
-
-  return color;
-};
-
-const pm25Color = (val) => {
-  let color = "#00c73c";
-
-  return color;
-};
-
 const BarChartSample = ({ data }) => {
   console.log("--barchart data--");
   console.log(data);

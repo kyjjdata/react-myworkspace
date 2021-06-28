@@ -8,6 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import BarChartSample from "./BarChartSample";
 import LineChartSample from "./LineChartSample";
 import ResponsiveTable from "./ResponsiveTableSample";
+import RadialBarChartSample from "./RadialBarChartSample";
 
 // import source from "./data/source";
 import korName from "./data/korName";
@@ -64,17 +65,20 @@ const transformLocationData = (source, citySggName) => {
   if (source.length === 0) return [];
 
   const transData = [];
-  let item = {};
-  source.forEach((record, index) => {
-    if (index % 2 === 0) {
-      item.citySggName = record.citySggName.substr(2, 3);
-      item.dayAverQuantity = parseInt(record[citySggName]);
-    } else {
-      item.dayAverCount = parseInt(record[citySggName]);
-      transData.unshift(item);
-      item = {};
-    }
-  });
+  for (let name in korNameLine) {
+    const item = {
+      citySggName: korNameLine[name],
+      Gangnam: parseInt(source[0][name]),
+      Seongbuk: parseInt(source[1][name]),
+      Yeongdeungpo: parseInt(source[2][name]),
+      Yongsan: parseInt(source[3][name]),
+      Jongno: parseInt(source[4][name]),
+      Jung: parseInt(source[5][name]),
+      Jungnang: parseInt(source[6][name]),
+    };
+    transData.push(item);
+  }
+
   return transData;
 };
 
@@ -82,7 +86,7 @@ const transformLocationData = (source, citySggName) => {
 const transformSidoTableData = (source) => {
   if (source.length === 0) return [];
   return source.map((item) => {
-    let newItem = { 시도명칭: item.citySidoName, 시군구: item.citySggName };
+    let newItem = { 시군구: item.citySggName };
     for (let name in korName) {
       let val = item[name];
       newItem[korName[name]] = val;
@@ -135,7 +139,7 @@ const FoodWasteEmissions = () => {
       <Hidden mdDown>
         <Grid item lg={1} />
       </Hidden>
-      <Grid item xs={12} sm={7} lg={6}>
+      <Grid item xs={12} sm={6} lg={6}>
         <Paper className={classes.paper} style={{ height: "25vh" }}>
           <h3>일별 음식물 쓰레기 배출량</h3>
           <BarChartSample data={transformSidoData(source)} />
@@ -144,24 +148,12 @@ const FoodWasteEmissions = () => {
           </h5>
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={5} lg={4}>
+      <Grid item xs={12} sm={6} lg={4}>
         <Paper className={classes.paper} style={{ height: "25vh" }}>
-          <h3>
-            <Select
-              value={citySggName}
-              onChange={(event) => {
-                setSido(event.target.value);
-              }}
-            >
-              {Object.keys(korNameLine).map((citySggName) => (
-                <MenuItem key={`menu-${citySggName}`} value={citySggName}>
-                  {korNameLine[citySggName]}
-                </MenuItem>
-              ))}
-            </Select>
-            {"\u00A0"} 음식물 쓰레기 배출량 2
-          </h3>
-          <LineChartSample data={transformLocationData(source, citySggName)} />
+          <h3> 음식물 쓰레기 배출횟수 </h3>
+          <RadialBarChartSample
+            data={transformLocationData(source, citySggName)}
+          />
         </Paper>
       </Grid>
       <Hidden mdDown>
@@ -172,8 +164,11 @@ const FoodWasteEmissions = () => {
       </Hidden>
       <Grid item xs={12} sm={12} lg={10}>
         <Paper className={classes.paper}>
-          <h3>음식물 쓰레기 배출량 3</h3>
+          <h3>자치구별 음식물쓰레기 배출 내용</h3>
           <ResponsiveTable data={transformSidoTableData(source.slice(0, 8))} />
+          <h5>
+            <i>(단위:g)</i>
+          </h5>
         </Paper>
       </Grid>
       <Hidden mdDown>
